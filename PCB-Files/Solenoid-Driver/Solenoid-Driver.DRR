@@ -1,0 +1,21 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Solenoid-Driver.CMPcbDoc   11/23/2022  10:37:21 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : Solenoid-Driver.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      30mil (0.762mm)                                           Round             32        PTH        18.43inch (468.00mm)
+T2      35mil (0.9mm)                                             Round             32        PTH        3.61inch (91.57mm)
+T3      39mil (1mm)                                               Round             48        PTH        9.83inch (249.68mm)
+T4      45mil (1.15mm)                                            Round             32        PTH        14.11inch (358.27mm)
+T5      47mil (1.2mm)                                             Round             32        PTH        9.97inch (253.27mm)
+T6      51mil (1.3mm)                                             Round             3         PTH        0.28inch (7.00mm)
+T7      102mil (2.591mm)                                          Round             4         PTH        11.39inch (289.26mm)
+T8      265mil (6.731mm)                                          Round             2         PTH        0.58inch (14.63mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              185
+
+Total Processing Time (hh:mm:ss) : 00:00:00
