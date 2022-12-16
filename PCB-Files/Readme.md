@@ -8,4 +8,4 @@ Second PCB folder is for the custom made controller, which allows user input and
 
 
 ## Solenoid Driver Board Preview
-<img src="../etc/Solenoid Driver.png" width="697" height="279" />
+<img src="../etc/Solenoid Driver.png" width="512" height="397" />
