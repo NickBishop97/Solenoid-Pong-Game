@@ -68,6 +68,13 @@ void Restart(void) {
 		standby_mode = 0;
 		mode_select = 0;
 		AI_select = 0;
+		score_select = 0;
+		//score_press = 0;
+		max_score = 3;
+		score_index = 0;
+		launch_temp = 0;
+		player1 = (Player){0,0,0,0};
+		player2 = (Player){0,0,0,0};
 
 		updateGame(); //updates entire 8x8 grid
 		updateScore(2, 2);
@@ -78,7 +85,7 @@ void Restart(void) {
 
 void pauseMode(void) {
 	if(pause == 1) {
-		NVIC_ST_CTRL_R = 0x0000;  // enable SysTick with core clock and interrupts
+		NVIC_ST_CTRL_R = 0x0000;  // disable SysTick
 	}
 	else{
 		NVIC_ST_CTRL_R = 0x0007;  // enable SysTick with core clock and interrupts
@@ -87,82 +94,73 @@ void pauseMode(void) {
 
 
 void p1_Button_Data(void) {
-	if(((p1_button_data & 0xFF)== 0xFF)&&(standby_delay == 1000))  {
+	if(((p1_button_data & ALL_SW)== 0xFF)&&(standby_delay == 2000))  {
 		standby_mode = 1;
 	}
-	else if(((p1_button_data & 0xFF) != 0xFF)&&(standby_mode == 1)){
+	else if(((p1_button_data & ALL_SW) != 0xFF)&&(standby_mode == 1)){
 		restart = 1;
 		Restart();
 	}
-	
 	if(start_game == 1) {
-		if(((p1_button_data & 0x80) == 0)&&(temp_pause == 0)){
+		if(((p1_button_data & SW1) == 0)&&(temp_pause == 0)){
 			pause = (pause+1)%2;
 			temp_pause = 1;
-		
 		}
-		else if(((p1_button_data & 0x80) != 0)&&(temp_pause == 1)){//SW1
+		else if(((p1_button_data & SW1) != 0)&&(temp_pause == 1)){
 			temp_pause = 0;
-			
 		}
 	}
 	if(pause == 0) {
-		if(((p1_button_data & 0x20) == 0) && ((p1_button_data & 0x04) == 0)) { 
+		if(((p1_button_data & SW3) == 0) && ((p1_button_data & SW6) == 0)) { 
 			professor_mode = 1;
 		}
-		
-		if((p1_button_data & 0x40) == 0){//SW2
+		if((p1_button_data & SW2) == 0){
 			professor_mode = 0;
 		}
-		if(((p1_button_data & 0x01) == 0)&&(temp_restart == 0)){
+		if(((p1_button_data & SW8) == 0)&&(temp_restart == 0)){
 			restart = 1;
 			temp_restart = 1;
 			Restart();
-			
 		}
-		else if(((p1_button_data & 0x01) != 0)&&(temp_restart == 1)){//SW8
+		else if(((p1_button_data & SW8) != 0)&&(temp_restart == 1)){
 			temp_restart = 0;
 			restart = 0;
 		}
-		
-
-		if(((p1_button_data & 0x02) == 0)&&(player1_leftpress != 1)&&(professor_mode == 0)){
-			player1_rightpress = 1;
+		if(((p1_button_data & SW7) == 0)&&(player1.leftpress != 1)&&(professor_mode == 0)){
+			player1.rightpress = 1;
 		}
-		else if(((p1_button_data & 0x04) == 0)&&(player1_rightpress != 1)&&(professor_mode == 0)){ //SW6
-			player1_leftpress = 1;
+		else if(((p1_button_data & SW6) == 0)&&(player1.rightpress != 1)&&(professor_mode == 0)){ 
+			player1.leftpress = 1;
 		}
 
-		else if(((p1_button_data & 0x20) == 0)&&(p2_scored == 1)){//&&(total >= 7)) {
+		else if(((p1_button_data & SW3) == 0)&&(p2_scored == 1)){
 			launch_ball = 1;
 		}
 		else if(professor_mode == 0) {
-			player1_rightpress = 0;
-			p1_rightone = 0;
-			player1_leftpress = 0;
-			p1_leftone = 0;
+			player1.rightpress = 0;
+			player1.rightone = 0;
+			player1.leftpress = 0;
+			player1.leftone = 0;
 		}	
-	
-	}		
+	}
 }
 
 void p2_Button_Data(void) {
-	if(mode == 0 && start_game == 1) {
-		if(((p2_button_data & 0x04) == 0)&&(player2_leftpress != 1)){
-			player2_rightpress = 1;
+	if(mode == P2_MODE && start_game == 1) {
+		if(((p2_button_data & SW6) == 0)&&(player2.leftpress != 1)){
+			player2.rightpress = 1;
 		}
-		else if(((p2_button_data & 0x02) == 0)&&(player2_rightpress != 1)){
-			player2_leftpress = 1;
+		else if(((p2_button_data & SW7) == 0)&&(player2.rightpress != 1)){
+			player2.leftpress = 1;
 		}
-
-		else if(((p2_button_data & 0x20) == 0)&&(p1_scored == 1)){//&&(total >= 7)) {
+		else if(((p2_button_data & SW3) == 0)&&(p1_scored == 1)){
 			launch_ball = 1;
 		}
 		else {
-			player2_rightpress = 0;
-			p2_rightone = 0;
-			player2_leftpress = 0;
-			p2_leftone = 0;
+			player2.rightpress = 0;
+			player2.rightone = 0;
+			player2.leftpress = 0;
+			player2.leftone = 0;
 		}
 	}
 }

@@ -2,6 +2,16 @@
 
 #include <stdlib.h>
 #include <time.h>
+/*
+typedef struct Player{
+unsigned int leftpress;
+	unsigned int rightpress;
+	unsigned int leftone;
+	unsigned int rightone;
+}player;
+*/
+Player player1 = {0, 0, 0, 0};
+Player player2 = {0, 0, 0, 0};
 unsigned long long value = 0;
 unsigned long long value1 = 0x0000;
 unsigned long long value2 = 0x0000;
@@ -24,11 +34,11 @@ unsigned int 			 playerOne_BoundLeft = 0x80;
 unsigned int 			 playerOne_BoundRight = 0x01;			
 unsigned int 			 playerTwo_BoundLeft = 0x80;
 unsigned int 			 playerTwo_BoundRight = 0x01;	
-unsigned long long playerOne_MiddlePad = 0;											
-unsigned long long playerTwo_MiddlePad = 0;	
-unsigned long long playerOne_CurrentPosition = 0;											
-unsigned long long playerTwo_CurrentPosition = 0;	
-unsigned long long ball_Position = 0;
+unsigned long long ball_Position = 0x0000001000000000;
+unsigned long long	playerTwo_MiddlePad = 0x0010;
+unsigned long long	playerOne_MiddlePad = 0x1000;
+unsigned long long	playerTwo_CurrentPosition = 0x0038;
+unsigned long long	playerOne_CurrentPosition = 0x3800;
 unsigned long 		 ball_Position_x = 0;
 unsigned long 		 player1_paddle_x = 0;
 unsigned long 		 player2_paddle_x = 0;
@@ -91,6 +101,14 @@ unsigned int P1_mode = 0;
 unsigned int P1_AI_delay = 0;
 int mode_select = 0;
 int AI_select = 0;
+int score_select = 0;
+int max_score = 3;
+int score_index = 0;
+int launch_temp = 0;
+int one_press = 0;
+int select_press = 0;
+int score_press = 0;
+int scores[4] = {3, 5, 7, 9};
 
 
 void Delay(void){

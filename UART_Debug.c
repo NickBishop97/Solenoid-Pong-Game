@@ -45,8 +45,8 @@ void showPosition(void) {
 	HexToBin2(row2);
 	sprintf(row1, "%llx", (0xFF & (value>>56)));
 	HexToBin2(row1);
-	//sprintf(row9, "%d", (standby_delay));
-	//HexToBin2(row9);
+	sprintf(row9, "%x", (p1_button_data));
+	HexToBin2(row9);
 	//(standby_delay);
 	
 	/*
