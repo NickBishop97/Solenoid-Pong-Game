@@ -8,7 +8,7 @@ Using solenoids as a screen display, we made a game of pong that is playable wit
 
 ## 3D Files
 All the 3D STL files are located in the 3D STL folder
-<img src="../etc/Block Versions.jpg" width="697" height="512" />
+<img src="./etc/Block Versions.jpg" width="697" height="512" />
 
 ## PCB Files
 All the PCB gerber files are located within the PCB files folder
