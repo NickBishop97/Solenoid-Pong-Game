@@ -12,3 +12,5 @@ All the 3D STL files are located in the 3D STL folder
 
 ## PCB Files
 All the PCB gerber files are located within the PCB files folder
+<img src="../etc/Controller.png" width="600" height="360" />
+<img src="../etc/Solenoid Driver.png" width="512" height="397" />
