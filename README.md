@@ -8,7 +8,9 @@ Using solenoids as a screen display, we made a game of pong that is playable wit
 
 ## 3D Files
 All the 3D STL files are located in the 3D STL folder
-[3D Files LInk]https://github.com/NickBishop97/Solenoid-Pong-Game/tree/main/3D-STL-FILES "Google's Homepage")
+
+[I'm an inline-style link](https://www.google.com)
+
 <img src="./etc/Block Versions.jpg" width="697" height="512" />
 
 ## PCB Files
